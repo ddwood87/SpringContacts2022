@@ -107,17 +107,27 @@
 		return false;
 	}
 </script>
+<style>
+	form{
+		display: flex;
+		flex-direction: column;
+	}
+	form input{
+		align-self: right;
+		width: 160px;
+	}
+</style>
 </head>
 <body>
-	<h1>Contact Details</h1>
-	<form th:object="${newContact}" th:action="@{/update/{id}(id=${newContact.id})}" method="post" onsubmit="return validateForm();"> //return required to stop submit on bad form entry.
+	<h1>Contact Details</h1>															<!--return required to stop submit on bad form entry.-->
+	<form th:object="${newContact}" th:action="@{/update/{id}(id=${newContact.id})}" method="post" onsubmit="return validateForm();"> 
 		<span id="errorMessages" hidden="hidden"></span>
-		Name: <input id="nameInput" name="name" size="20" th:field="*{name}"> <br/>
-		Relationship: <input id="relationInput" name="relationship" size="10" th:field="*{relationship}"><br/>
-		Phone Number: <input id="phoneInput" name="phone" size="20" th:field="*{phone}"><br/>
-		Street: <input id="streetInput" name="address.street" size="20" th:field="*{address.street}"><br/>
-		City: <input id="cityInput" name="address.city" size="20" th:field="*{address.city}"><br/>
-		State: <input id="stateInput" name="address.state" size="20" th:field="*{address.state}"><br/>
+		<label for="name" >Name: </label><input id="nameInput" name="name" size="20" th:field="*{name}"> <br/>
+		<label for="relationship" >Relationship: </label><input id="relationInput" name="relationship" size="10" th:field="*{relationship}"><br/>
+		<label for="phone" >Phone Number: </label><input id="phoneInput" name="phone" size="20" th:field="*{phone}"><br/>
+		<label for="address.street" >Street: </label><input id="streetInput" name="address.street" size="20" th:field="*{address.street}"><br/>
+		<label for="address.city" >City: </label><input id="cityInput" name="address.city" size="20" th:field="*{address.city}"><br/>
+		<label for="address.state" >State: </label><input id="stateInput" name="address.state" size="20" th:field="*{address.state}"><br/>
 		<input id="submitButton" name="submit" type="submit" value="Submit"/>
 	</form>
 	<a href="/viewAll">View all Contacts</a>
